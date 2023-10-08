@@ -14,9 +14,9 @@ import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ResetPassword from './pages/ResetPassword';
-import Dashboard from '../dashboard/src/pages/Dashboard';
+import Dashboard from './dashboard/pages/Dashboard';
 
-import '../dashboard/src/charts/ChartjsConfig';
+import './dashboard/charts/ChartjsConfig';
 
 function App() {
 
