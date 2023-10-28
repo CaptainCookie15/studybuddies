@@ -38,7 +38,7 @@ export const signInWithGoogle = () => {
         localStorage.setItem("email", String(email))
         localStorage.setItem("userID", String(userID))
         writeUserData(userID, name, email)
-
+        location.reload();
     }).catch((error) => {
         console.log(error)
     })
