@@ -5,6 +5,9 @@ import Header from '../partials/Header';
 import PageIllustration from '../partials/PageIllustration';
 import Banner from '../partials/Banner';
 
+import { checkUserSignIn, signInWithGoogle } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+
 function SignUp() {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -26,7 +29,7 @@ function SignUp() {
 
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1">Welcome. We exist your studying easier.</h1>
+                <h1 className="h1">Welcome.</h1>
               </div>
 
               {/* Form */}
