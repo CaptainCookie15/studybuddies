@@ -1,7 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth,GoogleAuthProvider,signInWithPopup, signOut } from "firebase/auth"
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, query, get, DataSnapshot } from "firebase/database";
 import { useNavigate } from 'react-router-dom';
+import type { DatabaseReference } from "firebase/database";
+import 'firebase/firestore';
+import flatpickr from 'flatpickr';
+import 'flatpickr/dist/flatpickr.min.css';
 
 const firebaseConfig = {
   apiKey: "AIzaSyADZ9OeYm6PPmoYDEtq32l44cg3vVbXCDs",
@@ -12,14 +16,18 @@ const firebaseConfig = {
   appId: "1:549638769130:web:62e235b4e4e5327cd60a93"
 };
 
+//Initialize FlatPickr
+const fromDate = flatpickr('#from1', {});
+const toDate = flatpickr('#to1', {});
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 
 const provider = new GoogleAuthProvider()
+const db = getDatabase();
 
 export function writeUserData(userId, name, email) {
-    const db = getDatabase();
     set(ref(db, 'users/' + userId), {
       username: name,
       email: email,
@@ -59,5 +67,68 @@ export const checkUserSignIn = (navigate) => {
   }
   else {
     return false;
+  }
+}
+
+export const updateFriendActivities = () => {
+
+}
+
+export const searchUsers = () => {
+  let matchedTutor = "";
+  let matchLevel = -1;
+  var dates = JSON.parse(localStorage.getItem("dates")||"")
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const subjects: string[] = [];
+  checkboxes.forEach(checkbox => {
+    const checkboxElement = checkbox as HTMLInputElement;
+    if (checkboxElement.checked) {
+      subjects.push(checkboxElement.value);
+    }
+  });
+  //remove first on
+  if (subjects.length > 0 && subjects[0] === "on") {
+    subjects.shift();
+  }
+  console.log(subjects)
+  if(dates!="") {
+    var start = new Date(dates[0]);
+    var end = new Date(dates[1]);
+    const tutorsRef = ref(db, 'tutors/');
+    get(tutorsRef).then((snapshot: DataSnapshot) => {
+      snapshot.forEach((tutorSnapshot: DataSnapshot) => {
+        const tutorData = tutorSnapshot.val();
+        if(tutorData.subjects) {
+          let matchingSubjects = subjects.filter(subject => tutorData.subjects[subject]);
+          if(matchingSubjects.length > 0) {
+            let tutorStartDate = new Date(tutorData.timeStart);
+            let tutorEndDate = new Date(tutorData.timeEnd);
+            //check if dates overlap
+            if((start <= tutorEndDate && end >= tutorStartDate) ||
+            (end <= tutorEndDate && end >= tutorStartDate) ||
+            (start >= tutorStartDate && start <= tutorEndDate)) {
+              //check for best matching tutor
+              if(matchingSubjects.length>matchLevel) {
+                matchedTutor=tutorData;
+                matchLevel = matchingSubjects.length;
+              }
+            }
+          }
+        }
+      });
+      if(matchedTutor != "") {
+        let friends: string[] = JSON.parse(localStorage.getItem("friends")||'["example@gmail.com","example@gmail.com","example@gmail.com","example@gmail.com","example@gmail.com"]')
+        friends.pop()
+        friends.unshift(matchedTutor["email"])
+        localStorage.setItem("friends", JSON.stringify(friends));
+        location.reload();
+      }
+      else {
+        alert("No Tutor Found for your Subject and Dates")
+      }
+    });
+  }
+  else {
+    alert("Please select both a start and end date.")
   }
 }

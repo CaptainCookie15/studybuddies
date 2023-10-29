@@ -19,6 +19,7 @@ function Datepicker({ align }) {
     },
     onChange: (selectedDates, dateStr, instance) => {
       instance.element.value = dateStr.replace("to", "-");
+      localStorage.setItem("dates", JSON.stringify(selectedDates));
     },
   };
 

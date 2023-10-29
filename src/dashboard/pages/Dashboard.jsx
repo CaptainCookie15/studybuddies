@@ -10,6 +10,8 @@ import DashboardCard10 from "../partials/dashboard/DashboardCard10";
 import DashboardCard12 from "../partials/dashboard/DashboardCard12";
 import Banner from "../../partials/Banner";
 
+import { searchUsers } from '../../firebase';
+
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -40,7 +42,7 @@ function Dashboard() {
                 {/* Datepicker built with flatpickr */}
                 <Datepicker />
                 {/* Add view button */}
-                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
+                <button onClick={() => { searchUsers() }} className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
                   <svg
                     className="w-4 h-4 fill-current opacity-50 shrink-0"
                     viewBox="0 0 16 16"

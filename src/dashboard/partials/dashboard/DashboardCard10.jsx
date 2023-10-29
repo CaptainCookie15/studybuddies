@@ -7,44 +7,46 @@ import Image04 from '../../images/user-36-08.jpg';
 import Image05 from '../../images/user-36-09.jpg';
 
 function DashboardCard10() {
+  let friendsList = JSON.parse(localStorage.getItem("friends")||'["example@gmail.com","example@gmail.com","example@gmail.com","example@gmail.com","example@gmail.com"]')
+  console.log(friendsList)
   const friends = [
     {
       id: '0',
       image: Image01,
-      name: 'Alex Shatov',
-      email: 'alexshatov@gmail.com',
+      name: 'None',
+      email: friendsList[0],
       status: 'Offline',
       time: '0/0',
     },
     {
       id: '1',
       image: Image02,
-      name: 'Philip Harbach',
-      email: 'philip.h@gmail.com',
-      status: 'Online',
+      name: 'None',
+      email: friendsList[1],
+      status: 'Offline',
       time: '0/0',
     },
     {
       id: '2',
       image: Image03,
-      name: 'Mirko Fisuk',
-      email: 'mirkofisuk@gmail.com',
+      name: 'None',
+      email: friendsList[2],
       status: 'Offline',
       time: '0/0',
     },
     {
       id: '3',
       image: Image04,
-      name: 'Olga Semklo',
-      email: 'olga.s@cool.design',
+      name: 'None',
+      email: friendsList[3],
       status: 'Offline',
       time: '0/0',
     },
     {
       id: '4',
       image: Image05,
-      name: 'Burak Long',
-      email: 'longburak@gmail.com',
+      name: 'None',
+      email: friendsList[4],
       status: 'Offline',
       time: '0/0',
     },

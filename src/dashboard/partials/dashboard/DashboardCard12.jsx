@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function DashboardCard12() {
   return (
     <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Recent Activity</h2>
+        <h2 className="font-semibold text-slate-800 dark:text-slate-100">Updates</h2>
       </header>
       <div className="p-3">
         {/* Card content */}
         {/* "Today" group */}
         <div>
           <header className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm font-semibold p-2">
-            Today
+            Recent
           </header>
           <ul className="my-1">
             {/* Item */}
@@ -25,18 +26,18 @@ function DashboardCard12() {
                 <div className="grow flex justify-between">
                   <div className="self-center">
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Nick Mark
+                      Tate Hongkeo
                     </a>{' '}
-                    mentioned{' '}
-                    <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Sara Smith
+                    reviewed{' '}
+                    <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="/">
+                      StudyBuddies
                     </a>{' '}
                     in a new post
                   </div>
                   <div className="shrink-0 self-end ml-2">
-                    <a className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" href="#0">
+                    <Link className="font-medium text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400" href="/">
                       View<span className="hidden sm:inline"> -&gt;</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -99,7 +100,7 @@ function DashboardCard12() {
         {/* "Yesterday" group */}
         <div>
           <header className="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm font-semibold p-2">
-            Yesterday
+            Past
           </header>
           <ul className="my-1">
             {/* Item */}
@@ -113,11 +114,11 @@ function DashboardCard12() {
                 <div className="grow flex justify-between">
                   <div className="self-center">
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      240+
+                      6 new
                     </a>{' '}
                     users have subscribed to{' '}
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Newsletter #1
+                      the Newsletter
                     </a>
                   </div>
                   <div className="shrink-0 self-end ml-2">
@@ -138,13 +139,13 @@ function DashboardCard12() {
               <div className="grow flex items-center text-sm py-2">
                 <div className="grow flex justify-between">
                   <div className="self-center">
-                    The post{' '}
+                    High School Student{' '}
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Post Name
+                     Shree Sundar
                     </a>{' '}
-                    was suspended by{' '}
-                    <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Nick Mark
+                    gave his opinion on{' '}
+                    <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="/">
+                      StudyBuddies
                     </a>
                   </div>
                   <div className="shrink-0 self-end ml-2">

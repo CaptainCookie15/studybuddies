@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
-import ThemeProvider from './utils/ThemeContext';
+import ThemeProvider from './dashboard/utils/ThemeContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

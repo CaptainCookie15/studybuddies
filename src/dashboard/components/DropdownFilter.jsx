@@ -64,38 +64,38 @@ function DropdownFilter({
           <ul className="mb-4">
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Direct VS Indirect</span>
+                <input value="math" type="checkbox" className="form-checkbox" />
+                <span className="text-black text-sm font-medium ml-2">Math</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Real Time Value</span>
+                <input value="science" type="checkbox" className="form-checkbox" />
+                <span className="text-black text-sm font-medium ml-2">Science</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Top Channels</span>
+                <input value="english" type="checkbox" className="form-checkbox" />
+                <span className="text-black text-sm font-medium ml-2">English</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Sales VS Refunds</span>
+                <input value="history" type="checkbox" className="form-checkbox" />
+                <span className="text-black text-sm font-medium ml-2">History</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Last Order</span>
+                <input value="lote" type="checkbox" className="form-checkbox" />
+                <span className="text-black text-sm font-medium ml-2">LOTE</span>
               </label>
             </li>
             <li className="py-1 px-3">
               <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="text-sm font-medium ml-2">Total Spent</span>
+                <input value="other" type="checkbox" className="form-radio" />
+                <span className="text-black text-sm font-medium ml-2">Other</span>
               </label>
             </li>
           </ul>
