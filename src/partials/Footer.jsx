@@ -20,7 +20,7 @@ function Footer() {
                   </svg>
                 </Link>
               </div>
-              <div className="text-gray-400">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+              <div className="text-gray-400">StudyBuddies is a non-profit created for the 2023 Congressional App Challenge.</div>
             </div>
 
             {/* 2nd, 3rd and 4th blocks */}
@@ -28,16 +28,16 @@ function Footer() {
 
               {/* 2nd block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Products</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Made With</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Web Studio</Link>
+                    <Link to="https://react.dev/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">React</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">DynamicBox Flex</Link>
+                    <Link to="https://firebase.google.com/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Firebase</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Programming Forms</Link>
+                    <Link to="https://formsubmit.co/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Form Submit</Link>
                   </li>
                 </ul>
               </div>
@@ -47,19 +47,19 @@ function Footer() {
                 <h6 className="text-gray-200 font-medium mb-1">Resources</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
+                    <Link to="https://www.khanacademy.org/" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Khan Academy</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Visual mockups</Link>
+                    <Link to="https://scholar.google.com/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Google Scholar</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
+                    <Link to="https://www.loc.gov/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Library of Congress</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Visual mockups</Link>
+                    <Link to="https://academicearth.org/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Academic Earth</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Nostrud exercitation</Link>
+                    <Link to="https://alison.com/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Alison</Link>
                   </li>
                 </ul>
               </div>

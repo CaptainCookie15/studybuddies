@@ -8,7 +8,7 @@ import FilterButton from "../components/DropdownFilter";
 import Datepicker from "../components/Datepicker";
 import DashboardCard10 from "../partials/dashboard/DashboardCard10";
 import DashboardCard12 from "../partials/dashboard/DashboardCard12";
-import Banner from "../partials/Banner";
+import Banner from "../../partials/Banner";
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);

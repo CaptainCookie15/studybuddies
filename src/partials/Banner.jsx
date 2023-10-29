@@ -11,17 +11,13 @@ function Banner() {
           <div className="bg-slate-800 text-slate-50 text-sm p-3 md:rounded shadow-lg flex justify-between">
             <div className="text-slate-500 inline-flex">
               <a
-                className="font-medium hover:underline text-slate-50"
-                href="https://github.com/cruip/open-react-template"
+                className="font-medium hover:underline text-emerald-400"
+                href="https://www.congressionalappchallenge.us/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Download<span className="hidden sm:inline"> on GitHub</span>
+                Made for the<span className="hidden sm:inline"> 2023 Congressional App Challenge</span>
               </a>{' '}
-              <span className="italic px-1.5">or</span>{' '}
-              <a className="font-medium hover:underline text-emerald-400" href="https://cruip.com/open-pro/" target="_blank" rel="noreferrer">
-                Check Premium Version
-              </a>
             </div>
             <button className="text-slate-500 hover:text-slate-400 pl-2 ml-3 border-l border-gray-700" onClick={() => setBannerOpen(false)}>
               <span className="sr-only">Close</span>
