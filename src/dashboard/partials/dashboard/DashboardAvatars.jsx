@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import User01 from '../../images/user-36-01.jpg';
-import User02 from '../../images/user-36-02.jpg';
-import User03 from '../../images/user-36-03.jpg';
-import User04 from '../../images/user-36-04.jpg';
+import User01 from '../../images/smiling-blush.png';
+import User02 from '../../images/smiling-face-with-sunglasses.png';
+import User03 from '../../images/smiling.png';
+import User04 from '../../images/winking.jpg';
 
 function DashboardAvatars() {
   return (

@@ -52,13 +52,13 @@ function DashboardCard12() {
               <div className="grow flex items-center border-b border-slate-100 dark:border-slate-700 text-sm py-2">
                 <div className="grow flex justify-between">
                   <div className="self-center">
-                    The post{' '}
+                    Tutor{' '}
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Post Name
+                      Ivan
                     </a>{' '}
-                    was removed by{' '}
+                    removed an available{' '}
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Nick Mark
+                      date
                     </a>
                   </div>
                   <div className="shrink-0 self-end ml-2">
@@ -80,11 +80,11 @@ function DashboardCard12() {
                 <div className="grow flex justify-between">
                   <div className="self-center">
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      Patrick Sullivan
+                      Henry
                     </a>{' '}
-                    published a new{' '}
+                    responded to your{' '}
                     <a className="font-medium text-slate-800 hover:text-slate-900 dark:text-slate-100 dark:hover:text-white" href="#0">
-                      post
+                      message
                     </a>
                   </div>
                   <div className="shrink-0 self-end ml-2">

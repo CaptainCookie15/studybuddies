@@ -66,22 +66,22 @@ function Footer() {
 
               {/* 4th block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Company</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Recommended Platforms</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
+                    <Link to="https://discord.com/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Discord</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Labore et dolore</Link>
+                    <Link to="https://meet.google.com/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Google Meet</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
+                    <Link to="https://slack.com/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Slack</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Labore et dolore</Link>
+                    <Link to="https://zoom.us/" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Zoom</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Consectetur adipiscing</Link>
+                    <Link to="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Microsoft Teams</Link>
                   </li>
                 </ul>
               </div>

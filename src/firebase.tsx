@@ -70,11 +70,8 @@ export const checkUserSignIn = (navigate) => {
   }
 }
 
-export const updateFriendActivities = () => {
-
-}
-
 export const searchUsers = () => {
+  let matchedTutorName = ""
   let matchedTutor = "";
   let matchLevel = -1;
   var dates = JSON.parse(localStorage.getItem("dates")||"")
@@ -90,7 +87,7 @@ export const searchUsers = () => {
   if (subjects.length > 0 && subjects[0] === "on") {
     subjects.shift();
   }
-  console.log(subjects)
+ 
   if(dates!="") {
     var start = new Date(dates[0]);
     var end = new Date(dates[1]);
@@ -101,8 +98,8 @@ export const searchUsers = () => {
         if(tutorData.subjects) {
           let matchingSubjects = subjects.filter(subject => tutorData.subjects[subject]);
           if(matchingSubjects.length > 0) {
-            let tutorStartDate = new Date(tutorData.timeStart);
-            let tutorEndDate = new Date(tutorData.timeEnd);
+            let tutorStartDate = new Date(tutorData.startTime);
+            let tutorEndDate = new Date(tutorData.endTime);
             //check if dates overlap
             if((start <= tutorEndDate && end >= tutorStartDate) ||
             (end <= tutorEndDate && end >= tutorStartDate) ||
@@ -110,6 +107,7 @@ export const searchUsers = () => {
               //check for best matching tutor
               if(matchingSubjects.length>matchLevel) {
                 matchedTutor=tutorData;
+                matchedTutorName=tutorSnapshot.key||"";
                 matchLevel = matchingSubjects.length;
               }
             }
@@ -117,9 +115,9 @@ export const searchUsers = () => {
         }
       });
       if(matchedTutor != "") {
-        let friends: string[] = JSON.parse(localStorage.getItem("friends")||'["example@gmail.com","example@gmail.com","example@gmail.com","example@gmail.com","example@gmail.com"]')
+        let friends: string[] = JSON.parse(localStorage.getItem("friends")||'["None","None","None","None","None"]')
         friends.pop()
-        friends.unshift(matchedTutor["email"])
+        friends.unshift(matchedTutorName)
         localStorage.setItem("friends", JSON.stringify(friends));
         location.reload();
       }
@@ -131,4 +129,23 @@ export const searchUsers = () => {
   else {
     alert("Please select both a start and end date.")
   }
+}
+
+export const updatedFriendInfo = (friend, info) => {
+  let friendRef = ref(db, `tutors/${friend}`);
+  get(friendRef)
+  .then((snapshot) => {
+    if(snapshot.exists()) {
+      const tutorData = snapshot.val();
+      console.log("FOUND",tutorData[info])
+      return tutorData[info];
+    } else {
+      console.log("Friend not found");
+      return "None"
+    }
+  })
+  .catch((error) => {
+    console.error("Error getting friend data:", error);
+    return "None"
+  });
 }

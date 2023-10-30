@@ -1,8 +1,8 @@
 import React from 'react';
 
 import TestimonialImage01 from '../images/shree.jpg';
-import TestimonialImage02 from '../images/testimonial-02.jpg';
-import TestimonialImage03 from '../images/testimonial-03.jpg';
+import TestimonialImage02 from '../images/garry.png';
+import TestimonialImage03 from '../images/tate.jpg';
 
 function Testimonials() {
   return (
@@ -29,9 +29,9 @@ function Testimonials() {
                     </svg>
                         </div>
                 </div>
-                <blockquote className="text-lg text-gray-400 grow">— StudyBuddies allows me to learn from my fellow peers at my own pace. I love the concept and would love to see it furthered.</blockquote>
+                <blockquote className="text-lg text-gray-400 grow">— StudyBuddies could allow me to learn from my fellow peers at my own pace free of cost. I love the concept and would love to see it furthered.</blockquote>
                 <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                  <cite className="text-gray-200 not-italic">Shree Sundar</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">Jasper HS</a>
+                  <cite className="text-gray-200 not-italic">Shree Sundar</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="https://www.pisd.edu/JASPER">Jasper HS</a>
                 </div>
               </div>
 
@@ -45,9 +45,9 @@ function Testimonials() {
                       </svg>
                         </div>
                   </div>
-                  <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>
+                  <blockquote className="text-lg text-gray-400 grow">— Tutoring has been something that I'm really passionate about, and it has gone beyond the volunteer hours for me. I think that StudyBuddies is a great way to make tutoring more accessible to the younger generation.</blockquote>
                   <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                    <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>
+                    <cite className="text-gray-200 not-italic">Garry Gong</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="https://illinois.edu/">UIUC</a>
                   </div>
                 </div>
 
@@ -61,9 +61,9 @@ function Testimonials() {
                         </svg>
                         </div>
                     </div>
-                    <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>
+                    <blockquote className="text-lg text-gray-400 grow">— In 7th grade, I was struggling with my History class, so I applied for a tutor. The tutor helped me comprehend the subject better, and I am now a straight A student in history. I would love to see tutoring made more available to young students such as myself.</blockquote>
                     <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                      <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>
+                      <cite className="text-gray-200 not-italic">Tate Hongkeo</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="https://www.pisd.edu/rice">Rice MS</a>
                     </div>
                   </div>
 
