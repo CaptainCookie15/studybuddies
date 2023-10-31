@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth,GoogleAuthProvider,signInWithPopup, signOut } from "firebase/auth"
-import { getDatabase, ref, set, query, get, DataSnapshot } from "firebase/database";
+import { getDatabase, ref, set, update, query, get, DataSnapshot } from "firebase/database";
 import { useNavigate } from 'react-router-dom';
 import type { DatabaseReference } from "firebase/database";
 import 'firebase/firestore';
@@ -28,28 +28,50 @@ const provider = new GoogleAuthProvider()
 const db = getDatabase();
 
 export function writeUserData(userId, name, email) {
-    set(ref(db, 'users/' + userId), {
-      username: name,
-      email: email,
-    });
-  }
+  update(ref(db, 'users/' + userId), {
+    username: name,
+    email: email,
+  });
+}
+
+export function updateFriends(friendsList) {
+  update(ref(db, 'users/' + localStorage.getItem("userID")), {
+    friends: friendsList
+  });
+}
+
+export async function getFriends() {
+  console.log("RUNNING")
+  var friends;
+  get(ref(db, 'users/' + localStorage.getItem("userID")+'/friends'))
+  .then((snapshot) => {
+    if(snapshot.exists()) {
+      friends = snapshot.val();
+      console.log(friends)
+    }
+    else {
+      friends=""
+    }
+    return friends;
+  })
+}
 
 export const signInWithGoogle = () => {
-    signInWithPopup(auth,provider)
-    .then((result) =>{
-        console.log(result)
-        const name = result.user.displayName;
-        const email = result.user.email;
-        const userID = result.user.uid;
+  signInWithPopup(auth,provider)
+  .then((result) =>{
+    console.log(result)
+    const name = result.user.displayName;
+    const email = result.user.email;
+    const userID = result.user.uid;
 
-        localStorage.setItem("name", String(name))
-        localStorage.setItem("email", String(email))
-        localStorage.setItem("userID", String(userID))
-        writeUserData(userID, name, email)
-        location.replace("/signin");
-    }).catch((error) => {
-        console.log(error)
-    })
+    localStorage.setItem("name", String(name))
+    localStorage.setItem("email", String(email))
+    localStorage.setItem("userID", String(userID))
+    writeUserData(userID, name, email)
+    location.replace("/signin");
+  }).catch((error) => {
+    console.log(error)
+  })
 }
 
 export const signUserOut = () => {
@@ -118,7 +140,7 @@ export const searchUsers = () => {
         let friends: string[] = JSON.parse(localStorage.getItem("friends")||'["None","None","None","None","None"]')
         friends.pop()
         friends.unshift(matchedTutorName)
-        localStorage.setItem("friends", JSON.stringify(friends));
+        updateFriends(JSON.stringify(friends))
         location.reload();
       }
       else {
@@ -131,14 +153,15 @@ export const searchUsers = () => {
   }
 }
 
-export const updatedFriendInfo = (friend, info) => {
-  let friendRef = ref(db, `tutors/${friend}`);
+export const getFriendInfo = (friend, info) => {
+  console.log(friend,info)
+  let friendRef = ref(db, `tutors/${friend}/${info}`);
   get(friendRef)
   .then((snapshot) => {
     if(snapshot.exists()) {
       const tutorData = snapshot.val();
-      console.log("FOUND",tutorData[info])
-      return tutorData[info];
+      console.log("FOUND",tutorData)
+      return tutorData;
     } else {
       console.log("Friend not found");
       return "None"

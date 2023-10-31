@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 
 import Image01 from '../../images/smiling-blush.png';
 import Image02 from '../../images/smiling-face-with-sunglasses.png';
@@ -6,51 +6,39 @@ import Image03 from '../../images/smiling.png';
 import Image04 from '../../images/winking.jpg';
 import Image05 from '../../images/grin.png';
 
-import {updatedFriendInfo} from '../../../firebase'
+import {getFriends,getFriendInfo} from '../../../firebase'
+const images = [Image01, Image02, Image03, Image04, Image05];
 
 function DashboardCard10() {
-  let friendsList = JSON.parse(localStorage.getItem("friends")||'["None","None","None","None","None"]')
-  var friends = [
-    {
-      id: '0',
-      image: Image01,
-      name: updatedFriendInfo(friendsList[0],"name"),
-      email: updatedFriendInfo(friendsList[0],"email"),
-      status: updatedFriendInfo(friendsList[0],"status")? "Online":"Offline",
-      time: '0/0',
-    },
-    {
-      id: '1',
-      image: Image02,
-      name: friendsList[1],
-      email: updatedFriendInfo(friendsList[1],"email"),
-      status: updatedFriendInfo(friendsList[1],"status")? "Online":"Offline",
-      time: '0/0',
-    },
-    {
-      id: '2',
-      image: Image03,
-      email: updatedFriendInfo(friendsList[2],"email"),
-      status: updatedFriendInfo(friendsList[2],"status")? "Online":"Offline",
-      time: '0/0',
-    },
-    {
-      id: '3',
-      image: Image04,
-      email: updatedFriendInfo(friendsList[3],"email"),
-      status: updatedFriendInfo(friendsList[3],"status")? "Online":"Offline",
-      time: '0/0',
-    },
-    {
-      id: '4',
-      image: Image05,
-      email: updatedFriendInfo(friendsList[4],"email"),
-      status: updatedFriendInfo(friendsList[4],"status")? "Online":"Offline",
-      time: '0/0',
-    },
-  ];
-  console.log(friends)
-  
+  var [friends, setFriends] = useState([]);
+  var friendsList = [];
+  const updatedFriends = [];
+  useEffect(() => {
+    
+    (async () => {
+      friendsList = await JSON.parse(await getFriends()||"[]");
+      for(let i = 0; i < 4; i++) {
+        const friend = friendsList[i];
+    
+        const friendInfo = await Promise.all([
+          getFriendInfo(friend, "name"),
+          getFriendInfo(friend, "email"),
+          getFriendInfo(friend, "status"),
+        ]);
+    
+        friends.push({
+          id: i.toString(),
+          image: images[i],
+          name: friendInfo[0],
+          email: friendInfo[1],
+          status: friendInfo[2] ? "Online" : "Offline",
+          time: '0/0',
+        });
+        setFriends(updatedFriends);
+      }
+    
+    })();
+  }, []);
   return (
     <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
