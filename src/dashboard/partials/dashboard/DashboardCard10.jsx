@@ -10,20 +10,25 @@ import {getFriends,getFriendInfo} from '../../../firebase'
 const images = [Image01, Image02, Image03, Image04, Image05];
 
 function DashboardCard10() {
-  var [friends, setFriends] = useState([]);
-  var friendsList = [];
-  const updatedFriends = [];
+  //fix later
+  const [friends, setFriends] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    
+    var friends = [];
+    var friendsList = [];
     (async () => {
-      friendsList = await JSON.parse(await getFriends()||"[]");
+      try {
+        friendsList = await JSON.parse(await getFriends());
+      } catch {
+        friendsList = ""
+      }
       for(let i = 0; i < 4; i++) {
         const friend = friendsList[i];
     
         const friendInfo = await Promise.all([
-          getFriendInfo(friend, "name"),
-          getFriendInfo(friend, "email"),
-          getFriendInfo(friend, "status"),
+          await getFriendInfo(friend, "name"),
+          await getFriendInfo(friend, "email"),
+          await getFriendInfo(friend, "status"),
         ]);
     
         friends.push({
@@ -34,11 +39,19 @@ function DashboardCard10() {
           status: friendInfo[2] ? "Online" : "Offline",
           time: '0/0',
         });
-        setFriends(updatedFriends);
       }
-    
+      setFriends(friends);
+      console.log(friends)
+      if(friends.length>=4) {
+        setLoading(false);
+      }
     })();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="col-span-full xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
       <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">

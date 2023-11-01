@@ -41,19 +41,22 @@ export function updateFriends(friendsList) {
 }
 
 export async function getFriends() {
-  console.log("RUNNING")
-  var friends;
-  get(ref(db, 'users/' + localStorage.getItem("userID")+'/friends'))
-  .then((snapshot) => {
-    if(snapshot.exists()) {
-      friends = snapshot.val();
-      console.log(friends)
-    }
-    else {
-      friends=""
-    }
-    return friends;
-  })
+  return new Promise((resolve, reject) => {
+    get(ref(db, 'users/' + localStorage.getItem("userID") + '/friends'))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const friends = snapshot.val();
+          console.log(friends);
+          resolve(friends);
+        } else {
+          resolve("");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        reject(error);
+      });
+  });
 }
 
 export const signInWithGoogle = () => {
@@ -136,12 +139,24 @@ export const searchUsers = () => {
           }
         }
       });
+      var friends: string[] = [];
       if(matchedTutor != "") {
-        let friends: string[] = JSON.parse(localStorage.getItem("friends")||'["None","None","None","None","None"]')
-        friends.pop()
-        friends.unshift(matchedTutorName)
-        updateFriends(JSON.stringify(friends))
-        location.reload();
+        get(ref(db, 'users/' + localStorage.getItem("userID") + '/friends'))
+        .then((snapshot) => {
+          if(snapshot.exists()) {
+            friends = JSON.parse(snapshot.val());
+          } else {
+            friends = [];
+          }
+          console.log(friends)
+          if(friends.length>4) {
+            friends.pop()
+          }
+          friends.push(matchedTutorName)
+          console.log(JSON.stringify(friends))
+          updateFriends(JSON.stringify(friends))
+          location.reload();
+          })
       }
       else {
         alert("No Tutor Found for your Subject and Dates")
@@ -154,21 +169,22 @@ export const searchUsers = () => {
 }
 
 export const getFriendInfo = (friend, info) => {
-  console.log(friend,info)
   let friendRef = ref(db, `tutors/${friend}/${info}`);
-  get(friendRef)
-  .then((snapshot) => {
-    if(snapshot.exists()) {
-      const tutorData = snapshot.val();
-      console.log("FOUND",tutorData)
-      return tutorData;
-    } else {
-      console.log("Friend not found");
-      return "None"
-    }
-  })
-  .catch((error) => {
-    console.error("Error getting friend data:", error);
-    return "None"
+  return new Promise((resolve, reject) => {
+    get(friendRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const tutorData = snapshot.val();
+          console.log("FOUND", tutorData);
+          resolve(tutorData);
+        } else {
+          console.log("Friend not found");
+          resolve("None");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting friend data:", error);
+        resolve("None");
+      });
   });
-}
+};
